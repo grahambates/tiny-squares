@@ -11,11 +11,11 @@ Main:
                 lea     sc_RastPort(a5),a1
                 jsr     _LVOClearScreen(a6)
 .l:
-                jsr     _LVOWaitTOF(a6)
+                ; jsr     _LVOWaitTOF(a6)
                 addq.w  #1,d4           ; inc frame
                 move.w  d4,d0
                 lsr.w   #7,d0
-                lea     sc_RastPort(a5),a1 ; WaitTOF trashed this :-(
+                ; lea     sc_RastPort(a5),a1 ; WaitTOF trashed this :-(
                 jsr     _LVOSetAPen(a6)
                 clr.w   d7
 .y:
@@ -23,7 +23,7 @@ Main:
                 eor.w   d7,d0
                 add.w   d0,d0           ; correct aspect
                 move.w  d7,d1           ; y
-                ; add.w   #64,d0          ; center
+                add.w   #64,d0          ; center
                 jsr     _LVOWritePixel(a6)
 
                 addq.b  #1,d7
